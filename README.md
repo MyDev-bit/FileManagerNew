@@ -56,16 +56,7 @@ venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Настроить переменные окружения
-Создайте файл `.env` в корне проекта:
-```env
-DATABASE_URL=mysql+mysqlconnector://user:password@localhost:3306/mydb
-SECRET_KEY=your_secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-```
-
-### 5. Запуск сервера
+### 4. Запуск сервера
 ```bash
 uvicorn api:app --reload
 ```
@@ -90,4 +81,5 @@ uvicorn api:app --reload
 
 ## 👨‍💻 Автор
 Разработчик: [MyDev-bit](https://github.com/MyDev-bit)
+
 
