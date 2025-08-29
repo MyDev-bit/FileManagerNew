@@ -2,9 +2,11 @@ FROM python:3.11
 
 WORKDIR /backend
 
-COPY /app/src .
+COPY requriments.txt
+COPY . /app/src
 
-RUN pip install -r requriments.txt .
+RUN pip install -r requriments.txt 
 
 CMD ["python","api.py"]
+
 
