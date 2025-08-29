@@ -18,7 +18,7 @@ services:
       - "354:8000"
 
   db:
-    image: mysql
+    image: mysql:8.1
     environment:
       MYSQL_DATABASE: "mydb"
       MYSQL_USER: "root"
@@ -28,4 +28,5 @@ services:
       interval: 10s
       timeout: 5s
       retries: 2
+
 
