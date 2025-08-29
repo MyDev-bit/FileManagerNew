@@ -1,0 +1,9 @@
+services:
+  admin:
+    image: app/admin_menu
+    ports:
+      - "443:5000"
+  backend:
+    image: app/src
+    ports:
+      - "354:8000"
