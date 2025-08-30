@@ -10,3 +10,4 @@ RUN pip install -r requriments.txt
 
 
 CMD ["python","admin.py"]
+
