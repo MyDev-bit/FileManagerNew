@@ -4,6 +4,7 @@ from pathlib import Path
 from sqlalchemy import insert
 from app.src.models import Files
 from fastapi import status
+import uuid
 from fastapi.responses import JSONResponse
 from app.src.routers.depends import DepDB
 from app.src.servises.LoginInDataBaceSystem import LogsDB
@@ -22,7 +23,7 @@ class ClientFileManager:
             with file_patch.open("wb") as fl:
                     fl.write(upload.file.read())
 
-                    stmt = insert(Files).values({"file_id": id(file_name), "file_name": file_name,
+                    stmt = insert(Files).values({"file_id": f"{uuid.uuid4()/+9}", "file_name": file_name,
                                                  "file_extension":str(file_extension[1]),"user_load":user_nick})
                     db.execute(stmt)
                     db.commit()
