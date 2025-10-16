@@ -51,11 +51,9 @@ class TokenManager:
                 print(token)
                 return token
 
-            except DecodeError:
+            except (DecodeError,ExpiredSignatureError):
                 raise HTTPException(status_code=401, detail="Вы не авторизованны")
-            except ExpiredSignatureError:
-                raise HTTPException(status_code=401, detail="Вы не авторизованны")
-
+    
         return cookie
 
     def get_decode_token_values(self = None,
