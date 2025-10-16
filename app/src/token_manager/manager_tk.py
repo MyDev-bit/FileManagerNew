@@ -19,18 +19,17 @@ def create_login_token(
         res = depDB.execute(stmt)
         depDB.commit()
 
-        if res.scalar() == loginForm.user_password:
+        match: res.scalar()       
+          case loginForm.user_password:
             response.set_cookie(key="user_uid",
                                 value=token,
                                 httponly=True,
                                 secure=False)
 
             return {"auth_status": "true",
-                    "name": loginForm.user_nick}
+                    "name":loginForm.user_nick}
 
-        else:
-            LogsDB.insert_loging(db=depDB, who_load="guest_not_register", log_status="ERROR",
-                                 value_log=f"Кто пытался авторизоваться")
+        
             return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED,
                                 content="Введен неправильный логин или пароль.")
 
